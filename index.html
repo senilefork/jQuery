@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" id="movie-name" placeholder="Movie Name">
+        <input type="number" id="rating" min="0" max="10" placeHolder="Rating">
+        <input type="submit" id="rating">
+    </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+  $("input[type=submit]").on("click", function(e){
+      e.preventDefault();
+
+      let movie = $("#movie-name").val();
+      let rating = $("#rating").val();
+    
+      $("body").append("<p>"+`${movie} rating: ${rating}`+"</p>").append("<button>Remove</button>");
+
+      $("button").on("click",function(){
+        $(this).prev().remove();
+        $(this).remove();
+      })
+
+      document.getElementById("form").reset();
+      
+  })
+</script>
+</html>
